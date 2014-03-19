@@ -252,7 +252,7 @@ PHP_METHOD(ldclass, __construct){
         {
             if (zend_hash_find(Z_ARRVAL_P(params), Z_STRVAL_P(name), Z_STRLEN_P(name)+1, (void **)&ppzval) == SUCCESS )
                 {
-                    if(Z_TYPE_PP(ppzval) != IS_STRING || Z_STRVAL_PP(ppzval)){
+                    if(Z_TYPE_PP(ppzval) != IS_STRING || !Z_STRVAL_PP(ppzval)){
                         return ;
                     }
                     php_strtolower(Z_STRVAL_PP(ppzval),Z_STRLEN_PP(ppzval));
