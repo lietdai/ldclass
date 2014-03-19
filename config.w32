@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("ledu", "for ledu support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("ledu", "enable ledu support", "no");
+
+if (PHP_LEDU != "no") {
+	EXTENSION("ledu", "ledu.c");
+}
+
