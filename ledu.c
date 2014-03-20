@@ -345,13 +345,21 @@ PHP_METHOD(ldclass, setLogin){
     PHP_MD5Final(digest, &context);
     make_digest_ex(md5ua, digest, 16);
     (void)time(&timeval);
-    sprintf(str,"%s\t%s\t%s\t%ld",uid,username,md5ua,timeval);
+    snprintf(str,sizeof(str),"%s\t%s\t%s\t%ld\t",uid,username,md5ua,timeval);
+    char temp[2];
+    int i = 8 - strlen(str)%8;
+    temp[0] = (char)i;
+    temp[1] = '\0';
+    while(i > 0){
+        strlcat(str, temp, sizeof(str));
+        --i;
+    }
     auth = php_mcrypt_do_crypt(MCRYPT_DES,INI_STR("ledu.key"),strlen(INI_STR("ledu.key")),str,strlen(str),"cbc",INI_STR("ledu.iv"),strlen(INI_STR("ledu.iv")),0 TSRMLS_CC);
-    auth = php_bin2hex(auth, strlen(auth), &newlen);
+    //@FIXME strlen(auth) > php auth length
+    auth = php_bin2hex(auth, strlen(auth) -1, &newlen);
     MAKE_STD_ZVAL(cookie_value);
     ZVAL_STRING(cookie_value, auth, 1);
     php_strtoupper(Z_STRVAL_P(cookie_value),Z_STRLEN_P(cookie_value));
-    php_bin2hex(Z_STRVAL_P(cookie_value), Z_STRLEN_P(cookie_value), &newlen);
     if ( php_setcookie(Z_STRVAL_P(cookie_name), Z_STRLEN_P(cookie_name), Z_STRVAL_P(cookie_value), Z_STRLEN_P(cookie_value), expires, "/", sizeof("/") -1, Z_STRVAL_P(domain), Z_STRLEN_P(domain), secure, 1, httponly TSRMLS_CC ) == SUCCESS){
         RETVAL_TRUE;
     }else{
