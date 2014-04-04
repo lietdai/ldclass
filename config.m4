@@ -1,5 +1,5 @@
 dnl $Id$
-dnl config.m4 for extension ledu
+dnl config.m4 for extension slime
 
 AC_DEFUN([PHP_MCRYPT_CHECK_VERSION],[
   old_CPPFLAGS=$CPPFLAGS
@@ -18,16 +18,16 @@ AC_DEFUN([PHP_MCRYPT_CHECK_VERSION],[
   CPPFLAGS=$old_CPPFLAGS
 ]) 
 
- PHP_ARG_WITH(ledu, for ledu support,
- [  --with-ledu=[=DIR]            Include ledu support])
+ PHP_ARG_WITH(slime, for slime support,
+ [  --with-slime=[=DIR]            Include slime support])
 
 dnl Otherwise use enable:
 
-dnl PHP_ARG_ENABLE(ledu, whether to enable ledu support,
+dnl PHP_ARG_ENABLE(slime, whether to enable slime support,
 dnl Make sure that the comment is aligned:
-dnl [  --enable-ledu           Enable ledu support])
+dnl [  --enable-slime           Enable slime support])
 
-if test "$PHP_LEDU" != "no"; then
+if test "$PHP_SLIME" != "no"; then
   dnl Write more examples of tests here...
   for i in /usr/local /usr;do
      test -f $i/include/mcrypt.h && MCRYPT_DIR=$i && break
@@ -41,7 +41,7 @@ if test "$PHP_LEDU" != "no"; then
   
   PHP_CHECK_LIBRARY(mcrypt, mcrypt_module_open, 
   [
-    PHP_ADD_LIBRARY(ltdl, LEDU_SHARED_LIBADD)
+    PHP_ADD_LIBRARY(ltdl, SLIME_SHARED_LIBADD)
     AC_DEFINE(HAVE_LIBMCRYPT,1,[ ])
   ],[
     PHP_CHECK_LIBRARY(mcrypt, mcrypt_module_open,
@@ -55,11 +55,11 @@ if test "$PHP_LEDU" != "no"; then
   ],[
     -L$MCRYPT_DIR/$PHP_LIBDIR -lltdl
   ])
-  PHP_ADD_LIBRARY_WITH_PATH(mcrypt, $MCRYPT_DIR/$PHP_LIBDIR, LEDU_SHARED_LIBADD)
+  PHP_ADD_LIBRARY_WITH_PATH(mcrypt, $MCRYPT_DIR/$PHP_LIBDIR, SLIME_SHARED_LIBADD)
   PHP_ADD_INCLUDE($MCRYPT_DIR/include)
 
-  PHP_SUBST(LEDU_SHARED_LIBADD)
+  PHP_SUBST(SLIME_SHARED_LIBADD)
         
   
-  PHP_NEW_EXTENSION(ledu, ledu.c, $ext_shared)
+  PHP_NEW_EXTENSION(slime, slime.c, $ext_shared)
 fi

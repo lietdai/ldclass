@@ -28,4 +28,4 @@ checking if debug is enabled... no
 checking if zts is enabled... no
 checking for re2c... no
 checking for gawk... gawk
-checking for ledu support... yes, shared
+checking for slime support... yes, shared

@@ -1,10 +1,10 @@
 --TEST--
-Check for ledu presence
+Check for slime presence
 --SKIPIF--
-<?php if (!extension_loaded("ledu")) print "skip"; ?>
+<?php if (!extension_loaded("slime")) print "skip"; ?>
 --FILE--
 <?php 
-echo "ledu extension is available";
+echo "slime extension is available";
 /*
 	you can add regression tests for your extension here
 
@@ -18,4 +18,4 @@ echo "ledu extension is available";
 */
 ?>
 --EXPECT--
-ledu extension is available
+slime extension is available

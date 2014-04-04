@@ -2,12 +2,12 @@
 // vim:ft=javascript
 
 // If your extension references something external, use ARG_WITH
-// ARG_WITH("ledu", "for ledu support", "no");
+// ARG_WITH("slime", "for slime support", "no");
 
 // Otherwise, use ARG_ENABLE
-// ARG_ENABLE("ledu", "enable ledu support", "no");
+// ARG_ENABLE("slime", "enable slime support", "no");
 
 if (PHP_LEDU != "no") {
-	EXTENSION("ledu", "ledu.c");
+	EXTENSION("slime", "slime.c");
 }
 

@@ -12,9 +12,9 @@ make install
 ```
 
 ## Runtime Configure
-- ledu.iv    //DES CBC iv,default AAAAAAAA  
-- ledu.cookie_name  // cookie name  ldauth
-- ledu.key  //DES CBC key default BBBBBBBB
+- slime.iv    //DES CBC iv,default AAAAAAAA  
+- slime.cookie_name  // cookie name  ldauth
+- slime.key  //DES CBC key default BBBBBBBB
 
 ##usage
 ```
