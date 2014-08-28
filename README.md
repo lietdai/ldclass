@@ -2,7 +2,7 @@
 ##Requirement 
 - libmcrypt
 
-##install
+##Install
 
 ```
 phpize
@@ -16,7 +16,7 @@ make install
 - slime.cookie_name  // cookie name  ldauth
 - slime.key  //DES CBC key default BBBBBBBB
 
-##usage
+##Usage
 ```
 ldclass::__construct
 ldclass::getUid
@@ -26,7 +26,9 @@ ldclass::setLogin(uid, username[,expires])
 ldclass::setLoginout
 ```
 
-功能上相当于下面的php代码
+##Info
+功能上相当于下面的php代码的c拓展实现
+
 DES.php
 
     <?php
